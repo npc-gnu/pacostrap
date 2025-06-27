@@ -3,15 +3,17 @@
 # pacostrap-alpha
 ## pacstrap for offline installation(manuel arch installation)
 
-Hey guys!
-This project is not done yet. So this README wont be long. 
-My goal is using a USB(except archiso USB) to install packages on it(1 st stage) than install them from USB(2nd stage). 
-This project is not writing pacstrap from scratch for offline installation, it uses pacstrap with a few option.
+Hello guys!
+I finally developed pacostrap fully but i never tested it. But it should probably work. 
 
-Like i said, this project have not done yet (only first stage is completed). I will end this project until tomorrow. 
+Hey arch developers! If you see my project, i would be verry happy to add this software in archiso(but i still need to test it).
 
-Hey, archlinux devs! If you saw my repo, i would be verry happy if you put this software to archiso. (when this project fully develops)
+## Installation
+```bash
+chmod +x compile && ./compile
+```
 
-LICENSE
+And i should still add more things
 
-GNU General Public License version 3 (GPLv3)
+## License:
+GNU General Public License version 3(GPLv3)
