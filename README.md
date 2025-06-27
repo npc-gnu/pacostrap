@@ -1,3 +1,5 @@
+![pacostrap logo](pacostrap.png)
+
 # pacostrap
 ## pacstrap for offline installation(manuel arch installation)
 
