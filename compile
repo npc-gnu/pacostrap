@@ -1,0 +1,3 @@
+#!/bin/bash
+
+g++ -Iinclude src/pacostrap.cpp src/firststage.cpp -o pacostrap
