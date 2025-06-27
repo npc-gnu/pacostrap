@@ -6,7 +6,6 @@
 #include "stages.hpp"
 
 using namespace std;
-
 int main(){
 	if(getuid() == 0){
 		cout << "Welcome to pacostrap beta! Which stage are you on?" << endl;
@@ -19,8 +18,12 @@ int main(){
 				firststage();
 				return 0;
 			}
+			case 2:{
+				secondstage();
+				return 0;
+			}
 			default:{
-				cout << "This option doesn't exists!" << endl;
+				cout << "This option doesn't exist!" << endl;
 			}
 		}
 	}

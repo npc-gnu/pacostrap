@@ -1,8 +1,8 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cstdlib>
-#include "stages.hpp"
+#include <iostream> //temel cout, cin vb.
+#include <string> // harf değişkenleri için
+#include <vector> // birden fazla değer atamak için bir değişkene
+#include <cstdlib> //system vb. için
+#include "stages.hpp" // header dosyası
 using namespace std;
 
 void firststage() {
@@ -25,17 +25,16 @@ void firststage() {
             if (result !=0){
                 cout <<  "Failed to format USB." << endl;
                 return ;
-            } else{
-                cout << "USB format: success!" << endl;
+            }
+            else{
                 cout << "Mounting USB..." << endl;
                 string mcmd = "mount " + usbpath + " /mnt" ;
-                system("mkdir -p /mnt");  // mount edilecek dizin varsa sorun olmaz
                 int mresult = system(mcmd.c_str());
                 if (mresult !=0){
                     cout << "Failed to mount USB." << endl;
                     return ;
-                } else {
-                    cout << "Mount: Success!" << endl;
+                }
+                else {
                     vector<string> paketler;
                     string input;
 
@@ -60,31 +59,31 @@ void firststage() {
                         return ;
                     }
 
-                    // Paket isimlerini tek string'e birleştir
-                    string komut = "sudo pacman -Sw --cachedir /mnt --noconfirm";
+                    string komut = "pacman -Sw --cachedir /mnt --noconfirm";
                     for (const auto& pkg : paketler) {
                         komut += " " + pkg;
                     }
                     int sonuc = system(komut.c_str());
 
                     if (sonuc != 0) {
-                        cout << "Paket indirme başarısız." << endl;
+                        cout << "Failed to install packages." << endl;
                         return ;
                     }
-
-                    cout << "Paketler başarıyla indirildi!" << endl;
+                    else{
+                    cout << "1st stage: Succesfully ended!" << endl;
                     return ;
                 }
 
 
             }
         }
-
+        }
     break;
     case 'n':
     case 'N':{
         cout << "Have a nice day." << endl;
         return ;
     }
-    }
+
+}
 }
