@@ -35,6 +35,8 @@ void firststage() {
                     return ;
                 }
                 else {
+                    system("mkdir /mnt/pacostrap");
+                    system("cp pacostrap /mnt/pacostrap/");
                     vector<string> paketler;
                     string input;
 

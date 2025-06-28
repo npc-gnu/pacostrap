@@ -1,7 +1,4 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include <cstdlib>
 #include <unistd.h>
 #include "stages.hpp"
 
@@ -26,8 +23,7 @@ int main(){
 				cout << "This option doesn't exist!" << endl;
 			}
 		}
-	}
-else{
+	}else{
 	cout << "You have to be root." << endl;
 }
 }

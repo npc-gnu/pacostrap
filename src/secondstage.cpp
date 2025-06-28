@@ -20,19 +20,9 @@ void secondstage(){
         cout << "Mounting disk failed." << endl;
     }
     else{
-    system("mkdir -p /usbmnt");
-    string usbpath;
-    cout << "Enter your USB's path.(path is /dev/*your-disk* .Example: /dev/sdb)." << endl;
-    cin >> usbpath;
-    string mcmd = "mount " + usbpath + " /usbmnt" ;
-    int mresult = system(mcmd.c_str());
-    if(mresult !=0){
-        cout << "Mounting USB failed." << endl;
-    }
-    else{
         cout << "Pacostrap, now calling pacstrap." << endl;
         int cpresult = system("cp /usbmnt/*.zst /mnt/var/cache/pacman/pkg/") ;
-        int forresult = system("for f in /mnt/var/cache/pacman/pkg/*.zst; do && pacman -Qp ""$f"" | awk '{print $1}' && done > pkglist.txt") ;
+        int forresult = system("for f in /mnt/var/cache/pacman/pkg/*.zst; do pacman -Qp \\\"$f\\\" | awk '{print $1}'; done > pkglist.txt");
         int pacresult = system("pacstrap -K /mnt $(cat pkglist.txt) --cachedir=/mnt/var/cache/pacman/pkg") ;
         if (cpresult !=0){
             cout << "Package copy opeartion failed." << endl;
@@ -48,4 +38,4 @@ void secondstage(){
         }
     }
 }
-}
+
