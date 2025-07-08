@@ -1,91 +1,117 @@
-#include <iostream> //temel cout, cin vb.
-#include <string> // harf değişkenleri için
-#include <vector> // birden fazla değer atamak için bir değişkene
-#include <cstdlib> //system vb. için
-#include "stages.hpp" // header dosyası
+#include <iostream> //cout, cin etc.
+#include <string>
+#include <vector> // adding multiple value the varible
+#include <cstdlib> //for system and etc
+#include "stages.hpp" // header file
 using namespace std;
-
+void setcolor(int textcolor)
+{
+    cout << "\033[" << 
+    textcolor << "m";
+}
+void cleacolor(){
+    cout << "\033[0m";
+}
 void firststage() {
-    cout << "For offline installation, you will need another USB(except archiso USB.)" <<  endl;
-    cout << "THIS OPERATION WILL FORMAT AND ERASE ALL YOUR DATA IN USB! ARE YOU SURE?(y(es) or n(o))" << endl;
-    char formatoption;
-    cin >> formatoption;
-
-    switch(formatoption){
-        case 'y':
-        case 'Y':{
-            cout << "Enter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc)." << endl;
-            cout << "You can learn *your-usb* with lsblk command." << endl;
-            string usbpath;
-            cin >> usbpath;
-
-            cout << "Formatting USB..." << endl;
-            string cmd = "mkfs.ext4 " + usbpath ;
-            int result = system(cmd.c_str());
-            if (result !=0){
-                cout <<  "Failed to format USB." << endl;
-                return ;
-            }
-            else{
-                cout << "Mounting USB..." << endl;
-                string mcmd = "mount " + usbpath + " /mnt" ;
-                int mresult = system(mcmd.c_str());
-                if (mresult !=0){
-                    cout << "Failed to mount USB." << endl;
-                    return ;
-                }
-                else {
-                    system("mkdir /mnt/pacostrap");
-                    system("cp pacostrap /mnt/pacostrap/");
-                    vector<string> paketler;
-                    string input;
-
-                    cout << "Enter packages you want to install order by order. Enter 'break' to end installing packages." << endl;
-
-                    while (true) {
-                        cout << ">> ";
-                        getline(cin, input);
-                        if (input == "break")
-                            break;
-
-                        if (input.empty() || input.find_first_not_of(" \t") == string::npos) {
-                            cout << "Space is not a package!" << endl;
-                            continue;
-                        }
-
-                        paketler.push_back(input);
-                    }
-
-                    if (paketler.empty()) {
-                        cout << "No packages given." << endl;
-                        return ;
-                    }
-
-                    string komut = "pacman -Sw --cachedir /mnt --noconfirm";
-                    for (const auto& pkg : paketler) {
-                        komut += " " + pkg;
-                    }
-                    int sonuc = system(komut.c_str());
-
-                    if (sonuc != 0) {
-                        cout << "Failed to install packages." << endl;
-                        return ;
-                    }
-                    else{
-                    cout << "1st stage: Succesfully ended!" << endl;
-                    return ;
-                }
+    
+    setcolor(31);
+    cout << "WARNING YOU NEED \033[0m \033[32m USB \033[0m HAVE \033[33m Difrent PARTITION \033[0m IN FAT32 OR XFAT YOU \033[31m CAN'T \033[0m USE MAIN PARTITION BECOUSE YOU \033[31m CAN'T MOUNT IT IN ARCH ISO \033[0m" << endl;
+    cleacolor();
+    cout << "Enter your USB \033[32m your-usb-partition \033[0m (WITH OUT '/dev/')." << endl;
+    cout << "if  You need to learn \033[32m *your-usb-partition* \033[0m with \033[32m lsblk \033[0m command." << endl;
+    setcolor(32);
+    cout << ">> ";
+    cleacolor();
+    string usb;
+    cin >> usb;
 
 
-            }
-        }
-        }
-    break;
-    case 'n':
-    case 'N':{
-        cout << "Have a nice day." << endl;
-        return ;
+
+    cout << "\033[32m geting usb_UUID\033[0m" << endl;
+        string get_usb_uuid_cmd = "blkid -d -o value -s UUID /dev/" + usb;
+    FILE *pipe = popen(get_usb_uuid_cmd.c_str(),"r");
+    if (!pipe){
+        cout << "Failed to run popen" << endl;
     }
 
-}
+    char buffer[128];
+    std:string usbuuid;
+    while (fgets(buffer,sizeof(buffer),pipe) != nullptr)
+    {
+        if (fgets(buffer,sizeof(buffer),pipe) != nullptr){
+            usbuuid += buffer;
+        }
+    }
+    int id = pclose(pipe);
+
+
+
+        cout << "\033[32m creating a connection point ... \033[0m" << endl;
+        int create_connect_point_id=system("mkdir /mnt/pacofstrap");
+        if (create_connect_point_id !=0){ //ERROR CHECK
+            cout << "\033[31m Failed to create a connection point \033[0m" << endl;
+            return;
+        }
+        else{
+            cout << "\033[32m Mounting USB... \033[0m" << endl;
+            string mcmd = "mount UUID='" + usbuuid + "' /mnt/pacofstrap" ;
+            string umcmd = "umount UUID='" +usbuuid + "' /mnt/pacofstrap" ;
+            cout << mcmd.c_str() << endl;
+            int mresult = system(mcmd.c_str());
+            if (mresult !=0){ //ERROR CHECK
+                cout << "\033[31m Failed to mount USB. \033[0m" << endl;
+                system("rm -rf /mnt/pacofstrap");
+                return ;
+            }
+            else {
+                cout << "\033[32m creating packages folder... \033[0m" << endl;
+                system("mkdir /mnt/pacofstrap/ofpkgs");
+                cout << "copying main files.." << endl;
+                int copy_main_files_id = system("cp pacofstrap /mnt/pacofstrap/");
+                if (copy_main_files_id !=0){ //ERROR CHECK
+                cout << "\033[31m Failed to copy main files. \033[0m" << endl;
+                return ;
+                }
+                vector<string> pkgs;
+                string input;
+                cout << "Enter packages you want to install order by order. Enter 'break' to end installing packages." << endl;
+
+    while (true) {
+            cout << "\033[32m >> ";
+            getline(cin, input);
+            if (input == "break")
+                break;
+            if (input.empty() || input.find_first_not_of(" \t") == string::npos) {
+                cout << "Space is no a package!" << endl;
+                continue;
+            }
+                pkgs.push_back(input);
+            }
+            if (pkgs.empty()) {
+                cout << "No packages given." << endl;
+                return ;
+            }
+            string pacman_command = "pacman -Sw --cachedir /mnt/pacofstrap/ofpkgs --noconfirm";
+            for (const auto& pkg : pkgs) {
+                pacman_command += " " + pkg;
+            }
+            int pacman_command_return_id = system(pacman_command.c_str());
+
+            if (pacman_command_return_id != 0) { //ERROR CHECK
+                    cout << "\033[31m Failed to install packages. \033[0m" << endl;
+                    system(umcmd.c_str());
+                    system("rm -rf /mnt/pacofstrap");
+                    return ;
+                    
+                }
+                else{
+                cout << "\033[32m 1st stage: Succesfully ended! \033[0m" << endl;
+                system(umcmd.c_str());
+                system("rm -rf /mnt/pacofstrap");
+                return ;
+                
+            }
+
+            }
+        }
 }

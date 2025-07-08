@@ -1,8 +1,8 @@
-#include <iostream> //temel cout, cin vb.
-#include <string> // harf değişkenleri için
-#include <vector> // birden fazla değer atamak için bir değişkene
-#include <cstdlib> //system vb. için
-#include "stages.hpp" // header dosyası
+#include <iostream> //base cout, cin etc.
+#include <string>
+#include <vector> // adding multiple value the varible
+#include <cstdlib> //for system and other things
+#include "stages.hpp" // header file
 using namespace std;
 
 vector<string> paketler;

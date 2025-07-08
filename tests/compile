@@ -1,0 +1,3 @@
+#!/bin/bash
+
+g++ -Iinclude deneme.cpp -o deneme
