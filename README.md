@@ -19,7 +19,7 @@ chmod +x compile && ./compile
 ## Usage
 ```any linux shell
 sudo pacostrap --stage=1 # for first stage
-sudo pacostrap --stage=' # for second stage
+sudo pacostrap --stage=2 # for second stage
 ```
 And i should still add more arguments, colors, and more...
 
