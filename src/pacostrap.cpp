@@ -4,39 +4,47 @@
 #include "stages.hpp"
 #include "functions.hpp"
 using namespace std;
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
 		string stage_arg;
 		string skip_arg = "none";
 		for (int i = 1; i < argc; ++i) {
 			string arg = argv[i];
 			if (arg.find("--stage=") == 0) {
-				stage_arg = arg.substr(8);
+				stage_arg = arg.substr(8) ;
 			} else if (arg.find("--skip=") == 0) {
-				skip_arg = arg.substr(7);
+				skip_arg = arg.substr(7) ;
 		}
 		} if(stage_arg.empty()) {
 							cerr << "You need to specify stage!. Example: pacostrap --stage=1 ." << endl;
-							return 1;
-						} else if (stage_arg == "1"){
+							return 1 ;
+						} else if (stage_arg == "1") {
 							if (skip_arg == "none") {
 							firststage();
 							return 0;
 							} else if (skip_arg == "format") {
-								skippingformat();
-								package();
-								return 0;
+								skippingformat() ;
+								package() ;
+								return 0 ;
 							} else if (skip_arg == "mount") {
-								package();
-								return 0;
+								package() ;
+								return 0 ;
 							} else {
 								cerr << "Wrong skip argumant! You can use --skip=format or --skip=mount" << endl;
-								return 1;
+								return 1 ;
 							}
 						}else if(stage_arg == "2"){
-							secondstage();
-							return 0;
-						}else{
+							if (skip_arg == "none" ) {
+							secondstage() ;
+							return 0 ;
+							} else if (skip_arg == "mount" ) {
+								diskpackage() ;
+								return 0 ;
+							} else {
+								cerr << "Wrong argumant!" << endl ;
+								return 1 ;
+							}
+						} else {
 							cerr << "Wrong argument!" << endl;
 							return 1;
 						}	

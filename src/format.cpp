@@ -4,6 +4,7 @@
 #include "functions.hpp" // functions file
 #include "command.hpp" // for my own super duper awesome function(joke)
 using namespace std;
+string usbpath;
 void format() {
     cout << "For offline installation, you will need another USB(except archiso USB.)\n";
     cout << "THIS OPERATION WILL FORMAT AND ERASE ALL YOUR DATA IN USB! ARE YOU SURE?(y(es) or n(o))\n";
@@ -21,7 +22,6 @@ void format() {
             cout << "Enter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc).\n";
             cout << "One of the following is your USB stick.\n";
             command ("lsblk") ;
-            string usbpath;
             cin >> usbpath;
             cout << "Formatting USB...\n";
             int result = command("mkfs.ext4 " + usbpath);
