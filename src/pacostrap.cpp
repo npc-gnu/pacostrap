@@ -7,37 +7,43 @@ using namespace std;
 int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
 		string stage_arg;
+		string shorter_stage_arg;
 		string skip_arg = "none";
+		string shorter_skip_arg = "none";
 		for (int i = 1; i < argc; ++i) {
 			string arg = argv[i];
 			if (arg.find("--stage=") == 0) {
 				stage_arg = arg.substr(8) ;
-			} else if (arg.find("--skip=") == 0) {
+			} else if (arg.find("--pass=") == 0) {
 				skip_arg = arg.substr(7) ;
+		} else if (arg.find("-S=") == 0) {
+			shorter_stage_arg = arg.substr(3);
+		} else if (arg.find("-P=") == 0) {
+			shorter_skip_arg = arg.substr(3);
 		}
-		} if(stage_arg.empty()) {
-							cerr << "You need to specify stage!. Example: pacostrap --stage=1 ." << endl;
+		} if(stage_arg.empty() && shorter_stage_arg.empty()) {
+							cerr << "You need to specify stage!. Example: ./pacostrap --stage=1 or ./pacostrap -S=1  ." << endl;
 							return 1 ;
-						} else if (stage_arg == "1") {
-							if (skip_arg == "none") {
+						} else if (stage_arg == "1" || shorter_stage_arg == "1") {
+							if (skip_arg == "none" || shorter_skip_arg == "none") {
 							firststage();
 							return 0;
-							} else if (skip_arg == "format") {
+							} else if (skip_arg == "format" || shorter_skip_arg == "f" || shorter_skip_arg == "F") {
 								skippingformat() ;
 								package() ;
 								return 0 ;
-							} else if (skip_arg == "mount") {
+							} else if (skip_arg == "mount" || shorter_skip_arg == "m" || shorter_skip_arg == "M") {
 								package() ;
 								return 0 ;
 							} else {
-								cerr << "Wrong skip argumant! You can use --skip=format or --skip=mount" << endl;
+								cerr << "Wrong skip argumant! You can use --pass=format or --pass=mount" << endl;
 								return 1 ;
 							}
-						}else if(stage_arg == "2"){
-							if (skip_arg == "none" ) {
+						}else if(stage_arg == "2" || shorter_stage_arg == "2"){
+							if (skip_arg == "none" || shorter_skip_arg == "none" || shorter_skip_arg == "n" || shorter_skip_arg == "N") {
 							secondstage() ;
 							return 0 ;
-							} else if (skip_arg == "mount" ) {
+							} else if (skip_arg == "mount" || shorter_skip_arg == "M" || shorter_skip_arg == "m" ) {
 								diskpackage() ;
 								return 0 ;
 							} else {
@@ -47,7 +53,7 @@ int main(int argc, char* argv[]) {
 						} else {
 							cerr << "Wrong argument!" << endl;
 							return 1;
-						}	
+						}
 	} else {
 	cerr << "You have to be root." << endl;
 	return 1;

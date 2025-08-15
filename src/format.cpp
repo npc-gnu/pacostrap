@@ -13,7 +13,7 @@ void format() {
     switch (formatoption) {
         case 'N':
         case 'n':{
-            cerr << "Have a nice day. You can use --skip=format argument to skip this formatting." << endl;
+            cerr << "Have a nice day. You can use --skip=format or -S=F argument to skip this formatting." << endl;
             exit(1);
             return ;
         } break ;

@@ -9,7 +9,7 @@ using namespace std;
 void diskpackage() {
     cout << "Pacostrap, now calling pacstrap." << endl;
     int cpresult = command("cp /usbmnt/*.zst /mnt/var/cache/pacman/pkg/") ;
-    int forresult = command("for f in /mnt/var/cache/pacman/pkg/*.zst; do pacman -Qp \\\"$f\\\" | awk '{print $1}'; done > pkglist.txt");
+    int forresult = command("for f in /mnt/var/cache/pacman/pkg/*.zst; do pacman -Qp \"$f\" | awk '{print $1}'; done > pkglist.txt");
     int pacresult = command("pacstrap -K /mnt $(cat pkglist.txt) --cachedir=/mnt/var/cache/pacman/pkg") ;
     if (cpresult !=0) {
         cout << "Package copy opeartion failed." << endl;
