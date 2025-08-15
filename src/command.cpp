@@ -1,64 +1,53 @@
-#include <iostream>      // std::cerr, std::cout
-#include <string>        // std::string
-#include <vector>        // std::vector
-#include <sstream>       // std::istringstream
-#include <unistd.h>      // fork, execvp
-#include <sys/wait.h>    // waitpid
-#include <cstring>       // strdup, free
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <cstring>
 
-// Komut string'ini boşluklara göre ayıran yardımcı fonksiyon
 std::vector<std::string> split_command(const std::string& komut) {
-    std::istringstream iss(komut);  // String'i stream gibi işleriz
+    std::istringstream iss(komut);
     std::string kelime;
     std::vector<std::string> sonuc;
-
-    while (iss >> kelime) {         // cin gibi boşlukla ayrılan parçaları tek tek al
-        sonuc.push_back(kelime);    // parçaları vektöre ekle
+    while (iss >> kelime) {
+        sonuc.push_back(kelime);
     }
-
     return sonuc;
 }
 
-// Asıl komut çalıştırma fonksiyonu: command()
-void command(const std::string& komut) {
-    // Komutu parçala (örneğin: "ls -l /" → {"ls", "-l", "/"})
+int command(const std::string& komut) {
     std::vector<std::string> args = split_command(komut);
 
-    // Eğer komut boşsa, çalıştırma
     if (args.empty()) {
         std::cerr << "empty command" << std::endl;
-        return;
+        return 1;
     }
 
-    // execvp için C-style (char*) array'e ihtiyaç var.
     std::vector<char*> argv;
-
-    for (const auto& s : args) {
-        argv.push_back(strdup(s.c_str()));  // std::string → char* dönüşümü (kopyalanır)
+    for (auto& s : args) {
+        argv.push_back(strdup(s.c_str()));
     }
+    argv.push_back(nullptr);
 
-    argv.push_back(nullptr);  // execvp null ile bittiğini anlamalı
-
-    // Yeni bir çocuk işlem oluştur (fork)
     pid_t pid = fork();
-
     if (pid == -1) {
         std::cerr << "fork() error!" << std::endl;
+        return 1;
     } else if (pid == 0) {
-        // Çocuk işlemin içindeyiz → exec ile komutu çalıştır
         execvp(argv[0], argv.data());
-
-        // Eğer exec başarısız olursa burası çalışır
         std::cerr << "execvp failed" << std::endl;
         exit(1);
     } else {
-        // Ana işlem: Çocuğu bekle
         int durum;
         waitpid(pid, &durum, 0);
-    }
 
-    // strdup ile kopyalanan stringleri temizle
-    for (char* ptr : argv) {
-        free(ptr);
+        for (char* ptr : argv) free(ptr);
+
+        if (WIFEXITED(durum)) {
+            return WEXITSTATUS(durum);  // Çocuğun exit kodunu döndür
+        } else {
+            return 1; // abnormal termination
+        }
     }
 }
