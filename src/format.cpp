@@ -19,9 +19,11 @@ void format() {
         } break ;
         case 'y' :
         case 'Y' : {
-            cout << "Enter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc).\n";
-            cout << "One of the following is your USB stick.\n";
+            cout << "\033[34;47mEnter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc).\033[0m\n";
+            cout << "\033[34;47mOne of the following is your USB stick.\033[0m\n";
+            cout << "\033[35;40m       Began To LSBLK      \033[0m\n";
             command ("lsblk") ;
+            cout << "\033[35;40m       End Of LSBLK      \033[0m\n";
             cin >> usbpath;
             cout << "Formatting USB...\n";
             int result = command("mkfs.ext4 " + usbpath);
