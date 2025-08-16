@@ -10,7 +10,10 @@ Hello Arch lovers!
 
 ## Installation
 ```any linux shell
+chmod +x compile && ./compile
+# or
 make
+# Note: I am still learning make, so i recommend to use compile script.
 ```
 
 ## Usage

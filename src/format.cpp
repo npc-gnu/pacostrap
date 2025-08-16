@@ -25,19 +25,19 @@ void format() {
             command ("lsblk") ;
             cout << "\033[35;40m       End Of LSBLK      \033[0m\n";
             cin >> usbpath;
-            cout << "Formatting USB...\n";
+            cout << "\033[36mFormatting USB...\033[0m\n";
             int result = command("mkfs.ext4 " + usbpath);
             if (result !=0) {
-                cerr <<  "Failed to format USB." << endl;
+                cerr <<  "\033[31;40mFailed to format USB.\033[0m" << endl;
                 exit(1);
                 return;
             } else {
-                cout << "Format: Succes." << endl;
+                cout << "\033[32mFormat: Succes.\033[0m" << endl;
             }
         } break ;
         default:{
-            cerr << "Wrong option! Enter y or n !" << endl;
-            cerr << "If you want to skip this stage, use --pass / -P argumant." << endl;
+            cerr << "\033[31;40mWrong option! Enter y or n !\033[0m" << endl;
+            cerr << "\033[36mIf you want to skip this stage, use --pass / -P argumant.\033[0m" << endl;
             exit(1);
         }
     }
