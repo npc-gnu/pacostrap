@@ -19,8 +19,8 @@ void format() {
         } break ;
         case 'y' :
         case 'Y' : {
-            cout << "\033[34;47mEnter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc).\033[0m\n";
-            cout << "\033[34;47mOne of the following is your USB stick.\033[0m\n";
+            cout << "\033[36;47mEnter your USB's path.(path is /dev/*your-usb* .Example: /dev/sdc).\033[0m\n";
+            cout << "\033[36;47mOne of the following is your USB stick.\033[0m\n";
             cout << "\033[35;40m       Began To LSBLK      \033[0m\n";
             command ("lsblk") ;
             cout << "\033[35;40m       End Of LSBLK      \033[0m\n";
@@ -28,11 +28,11 @@ void format() {
             cout << "\033[36mFormatting USB...\033[0m\n";
             int result = command("mkfs.ext4 " + usbpath);
             if (result !=0) {
-                cerr <<  "\033[31;40mFailed to format USB.\033[0m" << endl;
+                cerr <<  "\033[31;40mFormatting USB: Failed.\033[0m" << endl;
                 exit(1);
                 return;
             } else {
-                cout << "\033[32mFormat: Succes.\033[0m" << endl;
+                cout << "\033[32mFormatting USB: Succes.\033[0m" << endl;
             }
         } break ;
         default:{

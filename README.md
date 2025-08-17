@@ -48,7 +48,7 @@ Then,
 **Mounts your disk at */mnt* ---> Makes */mnt/var/cache/pacman/* directory ---> Copies your packages to */mnt/var/cache/pacman/* ---> Calls pacstrap to Install your packages ---> Completes offline installation.**
 
 ## My New Ideas To Add `pacostrap`
-- 1st Colors
+- 1st Making second stage Archinstall compatible
 - 2nd Support to other linux distros in first stage
 - 3rd Make second stage archiso compatible.
 

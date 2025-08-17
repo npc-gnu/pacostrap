@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 			shorter_skip_arg = arg.substr(3);
 		}
 		} if(stage_arg.empty() && shorter_stage_arg.empty()) {
-							cerr << "You need to specify stage!. Example: ./pacostrap --stage=1 or ./pacostrap -S=1  ." << endl;
+							cerr << "\033[31;40mYou need to specify stage!. Example: ./pacostrap --stage=1 or ./pacostrap -S=1  .\033[0m" << endl;
 							return 1 ;
 						} else if (stage_arg == "1" || shorter_stage_arg == "1") {
 							if (skip_arg == "none" || shorter_skip_arg == "none") {
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 								package() ;
 								return 0 ;
 							} else {
-								cerr << "Wrong skip argumant! You can use --pass=format or --pass=mount" << endl;
+								cerr << "\033[31;40mWrong skip argumant! You can use --pass=format or --pass=mount\033[0m" << endl;
 								return 1 ;
 							}
 						}else if(stage_arg == "2" || shorter_stage_arg == "2"){
@@ -47,15 +47,15 @@ int main(int argc, char* argv[]) {
 								diskpackage() ;
 								return 0 ;
 							} else {
-								cerr << "Wrong argumant!" << endl ;
+								cerr << "\033[31;40mWrong argumant!\033[0m" << endl ;
 								return 1 ;
 							}
 						} else {
-							cerr << "Wrong argument!" << endl;
+							cerr << "\033[31;40mWrong argument!\033[0m" << endl;
 							return 1;
 						}
 	} else {
-	cerr << "You have to be root." << endl;
+	cerr << "\033[31;40mYou have to be root.\033[0m" << endl;
 	return 1;
 }
 }

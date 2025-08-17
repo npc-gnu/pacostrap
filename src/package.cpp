@@ -11,18 +11,18 @@ void package() {
     command("cp pacostrap /mnt/pacostrap/");
     vector<string> packages;
     string input;
-    cout << "Enter packages you want to install order by order. Enter 'break' to end installing packages.\n";
+    cout << "\033[36mEnter packages you want to install order by order. Enter 'break' to end installing packages.\033[0m\n";
     while (true) {
         cout << ">> ";
         getline(cin, input);
         if (input == "break")
             break;
         if (input.empty() || input.find_first_not_of(" \t") == string::npos) {
-            cout << "Space is not a package!" << endl;
+            cout << "\033[93;40mSpace is not a package!\033[0m" << endl;
             continue;
         }packages.push_back(input);
     }if(packages.empty()){
-        cerr << "No packages given." << endl;
+        cerr << "\033[31;40mNo packages given.\033[0m" << endl;
         exit(1);
         return ;
     }string komut = "pacman -Sw --cachedir /mnt --noconfirm";
@@ -30,12 +30,12 @@ void package() {
         komut += " " + pkg;
     }int sonuc = command(komut.c_str());
     if (sonuc != 0) {
-        cerr << "Failed to install packages." << endl;
+        cerr << "\033[31;40mFailed to install packages.\033[0m" << endl;
         exit(1);
         return ;
     } else {
         cin.ignore();
-        cout << "1st stage: Succesfully ended!\n";
+        cout << "\033[32m1st stage: Succesfully ended!\033[0m\n";
     }
     return ;
 }
