@@ -25,7 +25,7 @@ sudo ./pacostrap -S=1 --pass=mount / -P=M # For first stage and skipping formatt
 ```
 > If you asking, *Why using sudo in first stage but not in the second?*
 > Answer is: You will be root in archiso(so in the second stage) but you will probably non-root in normal destkop using.
-### Archiso edition (If arch developers add this software to arch iso you can look here. In normal usage, it is not your business probably.)
+### You can check here if Arch developers add this software to ArchISO. (For normal usage, you probably won’t need this.) 
 ``` Any GNU + Linux shell
 pacostrap # For normal customized second stage
 pacostrap --pass=usbmount / -P=U-M # For skipping USB mounting and doing mounting disk with installing packages.
