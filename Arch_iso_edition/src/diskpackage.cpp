@@ -6,7 +6,7 @@
 #include "stages.hpp" // header dosyası
 #include "command.hpp" // my awesome super duper perfect function(joke)
 using namespace std;
-void diskpackage() {
+void a_diskpackage() {
     cout << "\033[36mPacostrap, now calling pacstrap.\033[0m" << endl;
     int cpresult = command("cp /usbmnt/*.zst /mnt/var/cache/pacman/pkg/") ;
     int forresult = command("for f in /mnt/var/cache/pacman/pkg/*.zst; do pacman -Qp \"$f\" | awk '{print $1}'; done > pkglist.txt");

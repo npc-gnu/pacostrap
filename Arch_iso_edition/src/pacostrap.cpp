@@ -15,14 +15,22 @@ int main(int argc, char* argv[]) {
 		} else if (arg.find("-P=") == 0) {
 			shorter_skip_arg = arg.substr(3);
 		}
-		} if (skip_arg.empty() && shorter_skip_arg.empty()) {
-							a_secondstage();
-							return 0;
-		} else if (skip_arg == "diskmount" || shorter_skip_arg == "M" || shorter_skip_arg == "m") {
-			diskpackage();
+		} if (skip_arg == "none" || shorter_skip_arg == "none") {
+			a_secondstage();
 			return 0;
+		} else if (skip_arg == "usbmount" || shorter_skip_arg == "U-M" || shorter_skip_arg == "u-m") {
+			a_diskmount();
+			a_diskpackage();
+			return 0;
+		} else if (skip_arg == "diskmount" || shorter_skip_arg == "D-M" || shorter_skip_arg == "d-m") {
+			a_usbmount();
+			a_diskpackage();
+			return 0;
+		} else if (skip_arg == "diskmount,usbmount" || skip_arg == "usbmount,diskmount" || shorter_skip_arg == "D,U-M" || shorter_skip_arg == "U,D-M"){
+			a_diskpackage();
 		} else {
-			cerr << "Wrong skip argumant!" << endl;
+			cerr << "\033[31;40mWrong skip argumant!\033[0m" << endl;
+			return 1;
 		}
 	} else {
 	cerr << "\033[31;40mYou have to be root.\033[0m" << endl;

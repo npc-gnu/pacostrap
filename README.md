@@ -4,7 +4,7 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 17 August 2025: Colors fully added. 
+> 18 August 2025: Archiso edition added.
 
 ## Installation
 ```any linux shell
@@ -15,7 +15,8 @@ make
 ```
 
 ## Usage
-```any linux shell
+### Normal
+```Any GNU + Linux shell
 sudo ./pacostrap --stage=1 / -S=1 # For first stage
  ./pacostrap --stage=2 / -S=2 # For second stage
 sudo ./pacostrap -S=1 --pass=format / -P=F  # For first stage and skipping formatting.
@@ -24,7 +25,17 @@ sudo ./pacostrap -S=1 --pass=mount / -P=M # For first stage and skipping formatt
 ```
 > If you asking, *Why using sudo in first stage but not in the second?*
 > Answer is: You will be root in archiso(so in the second stage) but you will probably non-root in normal destkop using.
-### NOTES,
+### Archiso edition (If arch developers add this software to arch iso you can look here. In normal usage, it is not your business probably.)
+``` Any GNU + Linux shell
+pacostrap # For normal customized second stage
+pacostrap --pass=usbmount / -P=U-M # For skipping USB mounting and doing mounting disk with installing packages.
+pacostrap --pass=diskmount / -P=D-M # For skipping disk mounting and doing USB mounting with installing packages.
+pacostrap --pass=diskmountmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=U,D-M # For skipping both USB and disk mounting with doing only installing packages.
+```
+> Where is --stage / -S argumant?
+> Answer is: Because you don't need first stage in archiso.  
+
+## NOTES,
 #### Second Stage
 - At second stage, you need to mount USB at /usbmnt . 
 - And you need to enter /usbmnt/pacostrap/ and then you can run pacostrap in second stage.
@@ -49,9 +60,9 @@ Then,
 **Mounts your disk at */mnt* ---> Makes */mnt/var/cache/pacman/* directory ---> Copies your packages to */mnt/var/cache/pacman/* ---> Calls pacstrap to Install your packages ---> Completes offline installation.**
 
 ## My New Ideas To Add `pacostrap`
-- 1st Making second stage Archinstall compatible
-- 2nd Support to other linux distros in first stage
-- 3rd Make second stage archiso compatible.
+- 1st Making second stage Archinstall compatible.
+- 2nd Support to other linux distros in first stage.
+- 3rd Make text animated.
 
 ## Fork(s) Of pacostrap
 [javav12/pacofstrap](https://github.com/javav12/pacofstrap)

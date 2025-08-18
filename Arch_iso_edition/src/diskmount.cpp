@@ -9,9 +9,9 @@ using namespace std;
 void a_diskmount() {
     cout << "\033[36mOne of the following is your main disk.\033[0m\n";
     cout << "\033[36;47mEnter your disk's path.(path is /dev/*your-disk* .Example: /dev/sda1).\033[0m\n";
-    cout << "\033[35;40m       Began To LSBLK      \033[0m\n";
+    cout << "\033[35;40m	Began To LSBLK	\033[0m\n";
     command ("lsblk") ;
-    cout << "\033[35;40m       End Of LSBLK      \033[0m\n";
+    cout << "\033[35;40m	End Of LSBLK	\033[0m\n";
     string diskpath;
     cin >> diskpath;
     int cmd = command("mount " + diskpath + " /mnt");

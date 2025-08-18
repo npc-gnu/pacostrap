@@ -1,7 +1,4 @@
 #ifndef STAGES_HPP
 #define STAGES_HPP
-
-void firststage();
-void secondstage();
-
+void a_secondstage();
 #endif
