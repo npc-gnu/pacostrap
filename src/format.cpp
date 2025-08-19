@@ -1,6 +1,8 @@
 #include <iostream> //temel cout, cin vb.
 #include <string> // harf değişkenleri için
 #include <cstdlib> // for exit
+#include <thread>  // for animation
+#include <animatel.hpp> // for animation(main)
 #include "functions.hpp" // functions file
 #include "command.hpp" // for my own super duper awesome function(joke)
 using namespace std;
@@ -25,13 +27,21 @@ void format() {
             command ("lsblk") ;
             cout << "\033[35;40m       End Of LSBLK      \033[0m\n";
             cin >> usbpath;
-            cout << "\033[36mFormatting USB...\033[0m\n";
-            int result = command("mkfs.ext4 " + usbpath);
+            cout << "\033[36mFormatting USB ";
+	    animating = true;
+	    thread animThread(animatel, '.', 50);
+            int result = command("mkfs.ext4 -F -q " + usbpath + " > /dev/null");
             if (result !=0) {
+		animating = false;
+		animThread.join();
+	        cout << "\n";	
                 cerr <<  "\033[31;40mFormatting USB: Failed.\033[0m" << endl;
                 exit(1);
                 return;
             } else {
+		animating = false;
+		animThread.join();
+		cout << "\n";
                 cout << "\033[32mFormatting USB: Succes.\033[0m" << endl;
             }
         } break ;
