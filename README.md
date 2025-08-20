@@ -67,6 +67,10 @@ Then,
 ## Fork(s) Of pacostrap
 [javav12/pacofstrap](https://github.com/javav12/pacofstrap)
 
+## Functions That `pacostrap` Uses
+- 1st command - A safe way to execute system commands for UNIX-based/Unix-like OS'ses [link](https://gitlab.com/pigames3/command)
+- 2nd animatel - '.' or string animation function [link](https://gitlab.com/pigames3/animatel)
+
 ## Contributors
 
 <a href="https://github.com/npc-gnu/pacostrap/graphs/contributors">

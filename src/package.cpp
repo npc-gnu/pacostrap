@@ -2,6 +2,8 @@
 #include <string> // harf değişkenleri için
 #include <vector> // birden fazla değer atamak için bir değişkene
 #include <cstdlib> // exit()
+#include <thread> // for animation
+#include "spinner.hpp" // spinner animation
 #include "functions.hpp" // functions file
 #include "stages.hpp" // header file
 #include "command.hpp" // for my own super duper awesome function(joke)
