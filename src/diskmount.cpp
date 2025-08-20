@@ -23,13 +23,14 @@ void diskmount() {
     if (cmd !=0) {
 	animating = false;
 	animThread.join();
+	cout << "\n";
         cerr << "\033[31;40mMounting disk: Failed.\033[0m" << endl;
         exit(1);
         return ;
     } else {
 	animating = false;
 	animThread.join();
+	cout << "\n";
         cout << "\033[32mMounting disk: Succes.\033[0m" << endl;
     }
-    return ;
 }

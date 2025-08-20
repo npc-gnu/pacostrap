@@ -8,8 +8,8 @@ int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
 		string stage_arg;
 		string shorter_stage_arg;
-		string skip_arg = "none";
-		string shorter_skip_arg = "none";
+		string skip_arg ;
+		string shorter_skip_arg;
 		for (int i = 1; i < argc; ++i) {
 			string arg = argv[i];
 			if (arg.find("--stage=") == 0) {
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 							cerr << "\033[31;40mYou need to specify stage!. Example: ./pacostrap --stage=1 or ./pacostrap -S=1  .\033[0m" << endl;
 							return 1 ;
 						} else if (stage_arg == "1" || shorter_stage_arg == "1") {
-							if (skip_arg == "none" || shorter_skip_arg == "none") {
+							if (skip_arg.empty() && shorter_skip_arg.empty() || skip_arg == "none" || shorter_skip_arg == "N" || shorter_skip_arg == "n") { 
 							firststage();
 							return 0;
 							} else if (skip_arg == "format" || shorter_skip_arg == "f" || shorter_skip_arg == "F") {
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 								return 1 ;
 							}
 						}else if(stage_arg == "2" || shorter_stage_arg == "2"){
-							if (skip_arg == "none" || shorter_skip_arg == "none" || shorter_skip_arg == "n" || shorter_skip_arg == "N") {
+							if (skip_arg.empty() && shorter_skip_arg.empty() && skip_arg == "none" || shorter_skip_arg == "none" || shorter_skip_arg == "n" || shorter_skip_arg == "N") {
 							secondstage() ;
 							return 0 ;
 							} else if (skip_arg == "mount" || shorter_skip_arg == "M" || shorter_skip_arg == "m" ) {

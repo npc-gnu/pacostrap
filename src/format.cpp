@@ -15,7 +15,7 @@ void format() {
     switch (formatoption) {
         case 'N':
         case 'n':{
-            cerr << "\033[36mHave a nice day. You can use --skip=format or -S=F argument to skip this formatting.\033[0m" << endl;
+            cerr << "\033[36mHave a nice day. You can use --pass=format or -P=F argument to skip this formatting.\033[0m" << endl;
             exit(1);
             return ;
         } break ;
