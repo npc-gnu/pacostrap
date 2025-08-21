@@ -31,11 +31,17 @@ void package() {
     for(const auto& pkg : packages){
         komut += " " + pkg;
     }int sonuc = command(komut.c_str());
+    atomic<bool> animating(true);
+    thread animThread(animatel, std::ref(animating), 100);
     if (sonuc != 0) {
+        animating = false;
+    	animThread.join();
         cerr << "\033[31;40mFailed to install packages.\033[0m" << endl;
         exit(1);
         return ;
     } else {
+    	animating = false;
+    	animThread.join();
         cin.ignore();
         cout << "\033[32m1st stage: Succesfully ended!\033[0m\n";
     }

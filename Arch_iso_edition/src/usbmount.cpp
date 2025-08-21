@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <thread>  // for animation(stopping)
+#include "animatel.hpp" // for animation(main)
 #include "command.hpp"
 #include "functions.hpp"
 using namespace std;
@@ -13,13 +15,19 @@ void a_usbmount(){
 	string a_usbpath;
 	cin >> a_usbpath;
 	cout << "Mounting usb...\n";
+	animating = true;
+    	thread animThread(animatel, '.', 50);
 	int a_usbmnt_result = command ("mount " + a_usbpath + " /usbmnt");
 	if (a_usbmnt_result !=0) {
+	    	animating = false;
+    		animThread.join();
 		cerr << "\033[31;40mFailed to mount USB.\033[0m" << endl;
 	       	cerr << "\033[36mIf you already mounted your USB, you can use -P=U-M skipping argumant.\033[0m" << endl;
 		exit(1);
 		return ;
 	} else {
+		animating = false;
+    		animThread.join();
 		cout << "\033[32mMounting USB: Succes.\033[0m" << endl;
 	}
 }

@@ -6,8 +6,8 @@
 using namespace std;
 int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
-		string skip_arg = "none";
-		string shorter_skip_arg = "none";
+		string skip_arg;
+		string shorter_skip_arg;
 		for (int i = 1; i < argc; ++i) {
 			string arg = argv[i];
 			if (arg.find("--pass=") == 0) {
@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 		} else if (arg.find("-P=") == 0) {
 			shorter_skip_arg = arg.substr(3);
 		}
-		} if (skip_arg == "none" || shorter_skip_arg == "none") {
+		} if (skip_arg.empty() && shorter_skip_arg.empty() || skip_arg == "none" || shorter_skip_arg == "none") {
 			a_secondstage();
 			return 0;
 		} else if (skip_arg == "usbmount" || shorter_skip_arg == "U-M" || shorter_skip_arg == "u-m") {

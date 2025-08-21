@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
 		string stage_arg;
 		string shorter_stage_arg;
-		string skip_arg ;
+		string skip_arg;
 		string shorter_skip_arg;
 		for (int i = 1; i < argc; ++i) {
 			string arg = argv[i];
