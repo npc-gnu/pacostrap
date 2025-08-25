@@ -4,7 +4,7 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 18 August 2025: Archiso edition added.
+> 25 August 2025: I am still alive! I am trying to package pacman as appimage. It is a bit hard. Development is not ended.
 
 ## Installation
 ```any linux shell
