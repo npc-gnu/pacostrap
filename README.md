@@ -4,7 +4,7 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 25 August 2025: I am still alive! I am trying to package pacman as appimage. It is a bit hard. Development is not ended.
+> 8 September 2025: I will use archlinux tarball for first stage. Development is not ended.
 
 ## Installation
 ```any linux shell
