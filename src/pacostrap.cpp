@@ -1,11 +1,15 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
+#include <filesystem>
 #include "stages.hpp"
 #include "functions.hpp"
+namespace pifiles = std::filesystem;
 using namespace std;
 int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
+		string pacman_path = "/usr/bin/pacman";
+		if (pifiles::exists(pacman_path)) {
 		string stage_arg;
 		string shorter_stage_arg;
 		string skip_arg;
@@ -54,6 +58,9 @@ int main(int argc, char* argv[]) {
 							cerr << "\033[31;40mWrong argument!\033[0m" << endl;
 							return 1;
 						}
+		} else {
+		cerr << "\033[31;40mpacostrap do not supports non-arch based distros(yet)\033[0m" << endl;
+		}
 	} else {
 	cerr << "\033[31;40mYou have to be root.\033[0m" << endl;
 	return 1;
