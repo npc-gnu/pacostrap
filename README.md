@@ -4,7 +4,7 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 8 September 2025: I will use archlinux tarball for first stage. Development is not ended.
+> 11 September 2025: Tarball support started and it is not ready yet.
 
 ## Installation
 ```any linux shell
@@ -62,7 +62,7 @@ Then,
 ## My New Ideas To Add `pacostrap`
 - 1st Making second stage Archinstall compatible.
 - 2nd Support to other linux distros in first stage.
-- 3rd Make text animated.
+- 3rd Make you able to install packages by your own in first stage.
 
 ## Fork(s) Of pacostrap
 [javav12/pacofstrap](https://github.com/javav12/pacofstrap)

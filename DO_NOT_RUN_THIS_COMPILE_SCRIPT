@@ -1,8 +1,8 @@
 #!/bin/bash
 
-g++ -Iinclude   \
+g++ -Iinclude -INon_Arch_Based_First_Stage/include  \
 	# Added include lines first.
-	src/*.cpp   \
+	src/*.cpp Non_Arch_Based_First_Stage/src/*.cpp  \
 		#Then source codes.
 		-o pacostrap
 		#Then compiled software named `pacostrap.`
