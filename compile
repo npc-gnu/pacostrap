@@ -1,8 +1,5 @@
 #!/bin/bash
 
 g++ -Iinclude   \
-	# Added include lines first.
 	src/*.cpp   \
-		#Then source codes.
 		-o pacostrap
-		#Then compiled software named `pacostrap.`
