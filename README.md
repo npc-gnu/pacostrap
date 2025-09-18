@@ -4,14 +4,14 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 11 September 2025: Tarball support started and it is not ready yet.
+> 18 September 2025: make file added, filesystem became more clear.
 
 ## Installation
 ```any linux shell
-chmod +x compile && ./compile
+make -j$(nproc)
 # or
-make
-# Note: I am still learning make, so i recommend to use compile script.
+chmod +x compile && ./compile
+# Note: make is faster, so i recommend using make.
 ```
 
 ## Usage
