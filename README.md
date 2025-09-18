@@ -8,7 +8,7 @@ Hello Arch lovers!
 
 ## Installation
 ```any linux shell
-make -j$(nproc)
+make --makefile setup/scripts/pacostrapMakefile -j$(nproc)
 # or
 chmod +x compile && ./compile
 # Note: make is faster, so i recommend using make.
