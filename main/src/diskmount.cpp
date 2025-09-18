@@ -1,11 +1,8 @@
 #include <iostream> //temel cout, cin vb.
 #include <string> // harf değişkenleri için
-#include <vector> // birden fazla değer atamak için bir değişkene
 #include <cstdlib> // exit
 #include <thread>  // animation(exit)
 #include "animatel.hpp"  // animation(main)
-#include "stages.hpp" // header dosyası
-#include "functions.hpp" // functions header file
 #include "command.hpp" // my awesome super duper perfect function(joke)
 using namespace std;
 void diskmount() {

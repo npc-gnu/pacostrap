@@ -3,7 +3,7 @@
 #include <cstdlib> // for exit
 #include <thread>  // for animation
 #include <animatel.hpp> // for animation(main)
-#include "functions.hpp" // functions file
+#include "firststagefuncs.hpp"
 #include "command.hpp" // for my own super duper awesome function(joke)
 using namespace std;
 string usbpath;

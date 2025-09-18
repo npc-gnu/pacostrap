@@ -1,11 +1,7 @@
 #include <iostream> //temel cout, cin vb.
-#include <string> // harf değişkenleri için
-#include <vector> // birden fazla değer atamak için bir değişkene
 #include <cstdlib> // exit function
 #include <thread> // for animation
 #include "spinner.hpp" // spinner animation
-#include "functions.hpp" // functions header file
-#include "stages.hpp" // header dosyası
 #include "command.hpp" // my awesome super duper perfect function(joke)
 using namespace std;
 void diskpackage() {
@@ -37,7 +33,7 @@ void diskpackage() {
     	animating = false;
     	animThread.join();
     	cout << "\n";
-        cout << "\033[32mCongrats! Your offline Arch GNU+Linux ended.\033[0m" << endl;
+        cout << "\033[32mCongrats! Your offline Arch GNU+Linux installation ended.\033[0m" << endl;
     } return ;
 }
 

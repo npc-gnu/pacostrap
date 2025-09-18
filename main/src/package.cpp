@@ -4,8 +4,7 @@
 #include <cstdlib> // exit()
 #include <thread> // for animation
 #include "spinner.hpp" // spinner animation
-#include "functions.hpp" // functions file
-#include "stages.hpp" // header file
+#include "firststagefuncs.hpp" // functions file
 #include "command.hpp" // for my own super duper awesome function(joke)
 using namespace std;
 void package() {
