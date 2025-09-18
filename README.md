@@ -4,14 +4,11 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 18 September 2025: make file added, filesystem became more clear.
+> 18 September 2025: NOW IT SUPPORTS OTHER DISTROS IN FIRST STAGE YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY 
 
 ## Installation
 ```any linux shell
-make --makefile setup/scripts/pacostrapMakefile -j$(nproc)
-# or
-chmod +x compile && ./compile
-# Note: make is faster, so i recommend using make.
+sudo bash build\&setup/scripts\&makefiles/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball to.
 ```
 
 ## Usage
@@ -61,7 +58,7 @@ Then,
 
 ## My New Ideas To Add `pacostrap`
 - 1st Making second stage Archinstall compatible.
-- 2nd Support to other linux distros in first stage.
+- 2nd Prepare all the other documents. CHANGELOG.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md etc.
 - 3rd Make you able to install packages by your own in first stage.
 
 ## Fork(s) Of pacostrap

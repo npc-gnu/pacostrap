@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2016
+# archstrap
+# Customised arch tarball for   THE FRICKING IDIOT PROJECT CALLED PACOSTRAP
+# ITS DEVELOPMENT NEVER ENDS
+
+set -eEo pipefail
+
+cleanup() {
+    umount -R "$rootFs" 2>/dev/null
+    
+    exit 1
+}
+
+arch_chroot() {
+    mount --bind "$1" "$1"
+
+    "$1/bin/arch-chroot" "$@"
+}
+
+bootstrap_ext() (
+    cd "$1"|| return
+
+    curl -O "$mirror/iso/latest/$2"
+    curl -O "https://archlinux.org/iso/latest/$2.sig"
+    gpg --keyserver-options auto-key-retrieve --verify "$2.sig"
+
+    tar -xf "$2" --numeric-owner
+    mv "$1/root.x86_64" "$3"
+)
+
+newroot_setup() {
+    cp -a "$2" "$1/"
+    cp bash.bashrc "$1/etc/"
+    
+    : 'usr/share'; [[ -d "/$_/terminfo" ]]&& cp -r "/$_/terminfo" "$1/$_/"
+    printf 'Server = %s/$repo/os/$arch\n' "$mirror" >>"$1/etc/pacman.d/mirrorlist"
+    
+    arch_chroot "$1" /bin/bash "$2"
+}
+
+LC_ALL=C
+tmpDir="${TMPDIR:-${XDG_RUNTIME_DIR:-/tmp}}"
+mountpoint="${1:-$tmpDir}"
+[[ $mountpoint != /* ]]&& mountpoint="$PWD/$mountpoint"
+rootFs="$mountpoint/${2:-archrootfs}"
+mirror='https://geo.mirror.pkgbuild.com'
+tarBall='archlinux-bootstrap-x86_64.tar.zst'
+
+trap cleanup EXIT INT
+
+[[ -d $rootFs ]]&& { arch_chroot "$rootFs"; exit; }
+
+bootstrap_ext "$mountpoint" "$tarBall" "$rootFs"
+newroot_setup "$rootFs" "chroot.sh"
