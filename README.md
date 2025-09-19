@@ -8,7 +8,7 @@ Hello Arch lovers!
 
 ## Installation
 ```any linux shell
-sudo bash build\&setup/scripts\&makefiles/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball to.
+sudo bash build\&setup/scripts\&makefiles/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
 ```
 
 ## Usage
