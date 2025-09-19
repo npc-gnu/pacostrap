@@ -2,9 +2,9 @@
 #include <string>
 #include <cstdlib>
 #include <thread>  // for animation(stopping)
-#include "animatel.hpp" // for animation(main)
+#include "archisofuncs.hpp"
 #include "command.hpp"
-#include "functions.hpp"
+#include "animatel.hpp"
 using namespace std;
 void a_usbmount(){
 	command("mkdir /usbmnt");

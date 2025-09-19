@@ -4,13 +4,22 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 18 September 2025: NOW IT SUPPORTS OTHER DISTROS IN FIRST STAGE YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY 
+> 19 September 2025: Directories have been changed. Arch_ISO edition updated.
 
 ## Installation
 ```any linux shell
-sudo bash build\&setup/scripts\&makefiles/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
+sudo bash build/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
 ```
-
+*or*
+```any linux shell
+bash build/compile
+# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. And i would not recommend it. It uses g++ directly and would be slower. 
+```
+*or, 3rd and last option*
+```any linux shell
+make --makefile build/Makefile -j$(nproc) 
+# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner.
+```
 ## Usage
 ### Normal
 ```Any GNU + Linux shell

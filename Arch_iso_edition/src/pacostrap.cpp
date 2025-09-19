@@ -1,8 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unistd.h>
-#include "stages.hpp"
-#include "functions.hpp"
+#include "archisofuncs.hpp"
 using namespace std;
 int main(int argc, char* argv[]) {
 	if (getuid() == 0) {
@@ -16,7 +15,9 @@ int main(int argc, char* argv[]) {
 			shorter_skip_arg = arg.substr(3);
 		}
 		} if (skip_arg.empty() && shorter_skip_arg.empty() || skip_arg == "none" || shorter_skip_arg == "none") {
-			a_secondstage();
+			a_usbmount();
+			a_diskmount();
+			a_diskpackage();
 			return 0;
 		} else if (skip_arg == "usbmount" || shorter_skip_arg == "U-M" || shorter_skip_arg == "u-m") {
 			a_diskmount();

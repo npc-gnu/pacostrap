@@ -4,8 +4,7 @@
 #include <cstdlib> // exit
 #include <thread>  // animation(exit)
 #include "animatel.hpp" // animation(main)
-#include "stages.hpp" // header dosyası
-#include "functions.hpp" // functions header file
+#include "archisofuncs.hpp" 
 #include "command.hpp" // my awesome super duper perfect function(joke)
 using namespace std;
 void a_diskmount() {

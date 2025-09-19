@@ -2,4 +2,4 @@
 
 git push origin
 git push gitlab
-git push github
+git push github main

@@ -4,8 +4,7 @@
 #include <cstdlib> // exit function
 #include <thread> // for animation
 #include "spinner.hpp" // spinner animation
-#include "functions.hpp" // functions header file
-#include "stages.hpp" // header dosyası
+#include "archisofuncs.hpp" // functions header file
 #include "command.hpp" // my awesome super duper perfect function(joke)
 using namespace std;
 void a_diskpackage() {

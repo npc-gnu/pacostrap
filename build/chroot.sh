@@ -23,5 +23,5 @@ cd /root/
 pacman -S git --noconfirm
 git clone https://github.com/npc-gnu/pacostrap.git
 cd pacostrap
-chmod +x /root/pacostrap/build\&setup/scripts\&makefiles/setup.sh
-bash /root/pacostrap/build\&setup/scripts\&makefiles/setup.sh
+chmod +x /root/pacostrap/build/setup.sh
+bash /root/pacostrap/build/setup.sh

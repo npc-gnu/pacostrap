@@ -16,5 +16,3 @@ $(TARGET): $(OBJ)
 # Temizlik
 clean:
 	rm -f $(OBJ) $(TARGET)
-
-

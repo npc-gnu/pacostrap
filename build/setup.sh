@@ -13,7 +13,7 @@ fi
 # 2nd Is arch-based control
 if grep -qi "arch" /etc/os-release; then
     echo "Arch based system(or tarball) found. Compiling directly." # FIXME AC
-    make -j$(nproc) --makefile $PWD/build\&setup/scripts\&makefiles/Makefile
+    make -j$(nproc) --makefile $PWD/build/Makefile
     echo "Now you can run pacostrap." # FIXME AC
     exit 0
 fi
