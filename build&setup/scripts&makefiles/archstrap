@@ -52,4 +52,4 @@ trap cleanup EXIT INT
 [[ -d $rootFs ]]&& { arch_chroot "$rootFs"; exit; }
 
 bootstrap_ext "$mountpoint" "$tarBall" "$rootFs"
-newroot_setup "$rootFs" "chroot.sh"
+newroot_setup "$rootFs" "$PWD/build\&setup/script\&makefiles/chroot.sh"
