@@ -1,3 +1,0 @@
-#!/bin/bash
-
-g++ -Iinclude src/* -o pacostrap
