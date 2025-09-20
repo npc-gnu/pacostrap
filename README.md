@@ -27,7 +27,7 @@ sudo ./pacostrap -S=1 --pass=mount / -P=M # For first stage and skipping formatt
 pacostrap # For normal customized second stage
 pacostrap --pass=usbmount / -P=U-M # For skipping USB mounting and doing mounting disk with installing packages.
 pacostrap --pass=diskmount / -P=D-M # For skipping disk mounting and doing USB mounting with installing packages.
-pacostrap --pass=diskmountmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=U,D-M # For skipping both USB and disk mounting with doing only installing packages.
+pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=U,D-M # For skipping both USB and disk mounting with doing only installing packages.
 ```
 > Where is --stage / -S argumant?
 > Answer is: Because you don't need first stage in archiso.  
