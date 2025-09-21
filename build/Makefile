@@ -1,8 +1,8 @@
 CXX = g++
-CXXFLAGS = -IArch_iso_edition/include -Ifunctions/include
+CXXFLAGS = -I../Arch_iso_edition/include -I../functions/include
 
 TARGET = pacostrap
-SRC = $(wildcard Arch_iso_edition/src/*.cpp) $(wildcard functions/src/*.cpp)
+SRC = $(wildcard ../Arch_iso_edition/src/*.cpp) $(wildcard ../functions/src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 $(TARGET): $(OBJ)
