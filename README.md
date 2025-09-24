@@ -4,13 +4,22 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 20 September 2025: ArchISO_Edition is now at a different branch.
+> 24 September 2025: Directories have been changed. Arch_ISO edition updated.
 
 ## Installation
 ```any linux shell
-sudo bash build\&setup/scripts\&makefiles/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
+sudo bash build/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
 ```
-
+*or*
+```any linux shell
+bash build/compile
+# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. And i would not recommend it. It uses g++ directly and would be slower. 
+```
+*or, 3rd and last option*
+```any linux shell
+make --makefile build/Makefile -j$(nproc) 
+# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner.
+```
 ## Usage
 ### Normal
 ```Any GNU + Linux shell
@@ -46,12 +55,19 @@ pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=
 **Formatting USB as ext4 ---> Mounting USB at */mnt* ---> Makes Directory */mnt/pacostrap* ---> Copies itself to */mnt/pacostrap/* ---> Installing your selected packages to USB  ---> First stage ends.**
 
 ### Second Stage
+If you are using **vanilla ArchISO**,
 Firstly, you need to make directory at */usbmnt* then mount the USB at */usbmnt*.
 You can do these steps by just running these following commands:
 ```ArchISO
+mkdir /usbmnt
+mount /dev/your-usb /usbmnt # You can learn your-usb by running lsblk
+cd /usbmnt/pacostrap
 ```
 Then,
 **Mounts your disk at */mnt* ---> Makes */mnt/var/cache/pacman/* directory ---> Copies your packages to */mnt/var/cache/pacman/* ---> Calls pacstrap to Install your packages ---> Completes offline installation.**
+
+Else if you are using **My OwN sUpEr DuPeR** custom ArchISO, then
+**Mounts your USB with installed packages on it at */usbmnt* ---> *And same steps up above.*
 
 ## My New Ideas To Add `pacostrap`
 - 1st Making second stage Archinstall compatible.
@@ -64,6 +80,7 @@ Then,
 ## Functions That `pacostrap` Uses
 - 1st command - A safe way to execute system commands for UNIX-based/Unix-like OS'ses [link](https://gitlab.com/pigames3/command)
 - 2nd animatel - '.' or string animation function [link](https://gitlab.com/pigames3/animatel)
+- 3rd archstrap - Archlinux's bootstrap tarball image [link]() 
 
 ## Contributors
 
@@ -72,4 +89,6 @@ Then,
 </a>
 
 ## License:
-GNU General Public License version 3(GPLv3)
+Every source code of this project (All .cpp/.hpp source codes, all bash scripts, Makefiles and .md files) licensed by GNU General Public License version 3(GPLv3). [LICENSE file](https://github.com/npc-gnu/pacostrap/blob/ArchISO_Edition/LICENSE)
+pacostrap.png, *logo* is licensed by V-Pi-Lv1. [Logos LICENSE file](https://github.com/npc-gnu/pacostrap/blob/ArchISO_Edition/LOGOS_LICENSE.md)
+
