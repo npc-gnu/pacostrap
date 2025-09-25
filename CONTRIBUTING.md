@@ -6,7 +6,9 @@
 - You can test it both in first stage, second stage and ArchISO Edition.
 If you are asking,
 > What the hell are we going to test?
+
 There is 2 kind of errors *and you should test* .
+
 |------------------------------------|---------------------------------------|
 |        User Interface Error        |         Critical Running Error        |
 |------------------------------------|---------------------------------------|
