@@ -6,7 +6,7 @@ xdata = pkgtype=pkg
 pkgver = 0.9.0-1
 pkgdesc = Arch Linux's Unofficial Offline Installation Helper Tool
 url = https://github.com/npc-gnu/pacostrap/tree/ArchISO_Edition
-builddate = 1758466592
+builddate = 1758809930
 packager = Unknown Packager
 size = 1709602
 arch = x86_64

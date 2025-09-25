@@ -8,7 +8,7 @@ url="https://github.com/npc-gnu/pacostrap/tree/ArchISO_Edition"
 license=('GPL3')
 depends=('glibc')
 makedepends=('gcc' 'make')
-source=("pacostrap-$pkgver.tar.gz")
+source=("https://raw.githubusercontent.com/npc-gnu/pacostrap/ArchISO_Edition/pacostrap_ArchISO-0.9.0-PKGBUILD/pacostrap-0.9.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
