@@ -30,7 +30,7 @@ pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=
 
 ## My New Ideas To Add `pacostrap`
 - 1st Making second stage Archinstall compatible.
-- 2nd Prepare all the other documents. CHANGELOG.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md etc.
+- 2nd Prepare all the other documents. CHANGELOG.md, etc.
 - 3rd Make you able to install packages by your own in first stage.
 
 ## Fork(s) Of pacostrap
@@ -39,7 +39,7 @@ pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=
 ## Functions That `pacostrap` Uses
 - 1st command - A safe way to execute system commands for UNIX-based/Unix-like OS'ses [link](https://gitlab.com/pigames3/command)
 - 2nd animatel - '.' or string animation function [link](https://gitlab.com/pigames3/animatel)
-- 3rd archstrap - Archlinux's bootstrap tarball image [link]() 
+- 3rd archstrap - Archlinux's bootstrap tarball image [link](https://github.com/wick3dr0se/archstrap) 
 
 ## Contributors
 
