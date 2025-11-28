@@ -16,11 +16,9 @@ void normalmount() {
 	animThread.join();
         cerr << "\033[31;40mMounting USB: Failed.\033[0m" << endl;
         exit(1);
-        return ;
     } else {
     animating = false;
     animThread.join();
     cout << "\033[32mMounting USB: Succes.\033[0m" << endl;
     }
-    return ;
 }

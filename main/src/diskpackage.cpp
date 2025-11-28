@@ -34,6 +34,5 @@ void diskpackage() {
     	animThread.join();
     	cout << "\n";
         cout << "\033[32mCongrats! Your offline Arch GNU+Linux installation ended.\033[0m" << endl;
-    } return ;
+    } 
 }
-

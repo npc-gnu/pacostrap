@@ -14,9 +14,7 @@ void skippingformat(){
     if (mresult !=0){
         cerr << "Failed to mount USB." << endl;
         exit(1);
-        return ;
     } else {
         cout << "Mount: Succes." << endl;
     }
-    return ;
 }

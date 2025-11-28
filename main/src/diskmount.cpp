@@ -23,7 +23,6 @@ void diskmount() {
 	cout << "\n";
         cerr << "\033[31;40mMounting disk: Failed.\033[0m" << endl;
         exit(1);
-        return ;
     } else {
 	animating = false;
 	animThread.join();

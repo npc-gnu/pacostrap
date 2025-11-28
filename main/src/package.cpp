@@ -25,7 +25,6 @@ void package() {
     }if(packages.empty()){
         cerr << "\033[31;40mNo packages given.\033[0m" << endl;
         exit(1);
-        return ;
     }string komut = "pacman -Sw --cachedir /mnt --noconfirm";
     for(const auto& pkg : packages){
         komut += " " + pkg;
@@ -37,12 +36,10 @@ void package() {
     	animThread.join();
         cerr << "\033[31;40mFailed to install packages.\033[0m" << endl;
         exit(1);
-        return ;
     } else {
     	animating = false;
     	animThread.join();
         cin.ignore();
         cout << "\033[32m1st stage: Succesfully ended!\033[0m\n";
     }
-    return ;
 }
