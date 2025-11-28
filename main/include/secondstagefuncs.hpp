@@ -1,5 +1,3 @@
-#ifndef SECONDSTAGEFUNCS_HPP
-#define SECONDSTAGEFUNCS_HPP
+#pragma once
 void diskmount();
 void diskpackage();
-#endif

@@ -80,6 +80,7 @@ Else if you are using **My OwN sUpEr DuPeR** custom ArchISO, then
 - 1st Making second stage Archinstall compatible.
 - 2nd Prepare all the other documents. CHANGELOG.md etc.
 - 3rd Make you able to install packages by your own in first stage.
+- 4th Use json to store installed packages. 
 
 ## Fork(s) Of pacostrap
 [javav12/pacofstrap](https://github.com/javav12/pacofstrap)

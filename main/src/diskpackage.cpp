@@ -1,7 +1,7 @@
-#include <iostream> //temel cout, cin vb.
-#include <cstdlib> // exit function
-#include <thread> // for animation
-#include "spinner.hpp" // spinner animation
+#include <iostream> 
+#include <cstdlib> 
+#include <thread> 
+#include "spinner.hpp"
 using namespace std;
 void diskpackage() {
 	cout << "\033[36mPacostrap, now calling pacstrap.\033[0m\n";
