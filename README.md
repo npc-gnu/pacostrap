@@ -4,7 +4,7 @@
 ## pacstrap for offline installation(manuel arch installation)
 
 Hello Arch lovers!
-> 24 September 2025: Directories have been changed. Arch_ISO edition updated.
+> 28 November 2025: build » setup, Makefile updated, README.md updated according to Makefile, .gitignore updated.
 
 ## Installation
 ```any linux shell
@@ -12,12 +12,19 @@ sudo bash build/setup.sh # This script will automatically detect if you are root
 ```
 *or*
 ```any linux shell
-bash build/compile
+bash setup/compile
 # MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. And i would not recommend it. It uses g++ directly and would be slower. 
 ```
-*or, 3rd and last option*
+*or, 3rd and last option* **Using Make.**
 ```any linux shell
-make --makefile build/Makefile -j$(nproc) 
+make --makefile setup/Makefile -j$(nproc) # For normal compiling.
+make --makefile setup/Makefile fast -j$(nproc) # For optimized code. A bit faster.
+make --makefile setup/Makefile faster -j$(nproc) # For more optimized code. However, it can be a little tracky because of more optimization.
+make --makefile setup/Makefile fastest -j$(nproc) # For most optimized code. This is most dangerous and fastest working code. 
+make --makefile setup/Makefile clang -j$(nproc) # For normal compiling with clang++ instead of g++. I would recommend g++ ones bcz well... I love GNU.
+make --makefile setup/Makefile cfast -j$(nproc) # Normal fast but with clang++.
+make --makefile setup/Makefile cfaster -j$(nproc) # Normal faster but with clang++.
+make --makefile setup/Makefile cfastest -j$(nproc) # Normal fastest but with clang++.
 # MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner.
 ```
 ## Usage
