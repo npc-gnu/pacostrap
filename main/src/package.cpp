@@ -2,10 +2,11 @@
 #include <string> 
 #include <vector> 
 #include <cstdlib> 
-#include <thread> 
+#include <thread>
+#include <nlohmann/json.hpp>
 #include "spinner.hpp" 
 #include "firststagefuncs.hpp" 
-#include "command.hpp" 
+#include "command.hpp"
 using namespace std;
 void package() {
 	command("mkdir /mnt/pacostrap");

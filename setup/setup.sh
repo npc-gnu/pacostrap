@@ -22,12 +22,10 @@ fi
 mountdir="/mnt/tarballrun"
 mkdir -p "$mountdir"
 
-script_path="$PWD/build&setup/scripts/archstrap"
+script_path="$PWD/setup/scripts/archstrap"
 
 if [[ ! -x "$script_path" ]]; then
     echo "Error: $script_path was not found!" # FIXME AC
     exit 1
 fi
-
 "$script_path" "$mountdir"
-

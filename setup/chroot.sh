@@ -20,8 +20,8 @@ bash --login
 
 ## pacostrap's things now
 cd /root/
-pacman -S git --noconfirm
-git clone https://github.com/npc-gnu/pacostrap.git
+pacman -S git --noconfirm > /dev/null
+git clone https://github.com/npc-gnu/pacostrap.git pacostrap
 cd pacostrap
-chmod +x /root/pacostrap/build/setup.sh
-bash /root/pacostrap/build/setup.sh
+chmod +x /root/pacostrap/setup/setup.sh
+bash /root/pacostrap/setup/setup.sh
