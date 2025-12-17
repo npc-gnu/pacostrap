@@ -1,3 +1,6 @@
 *swp
 *.o
 pacostrap
+
+# I am trying to write a PKGBUILD for pacostrap but it does not works yet.
+aur/
