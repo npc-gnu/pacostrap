@@ -15,6 +15,7 @@ cbuild = $(cCXX) $(OBJ) -o $(TARGET)
 fastflags = -O2 $(OFLAGS)
 fasterflags = -O3 $(OFLAGS) -funroll-loops
 fastestflags = -Ofast $(OFLAGS) -funroll-loops
+smallerflag = -Os
 
 $(TARGET): $(OBJ)
 	$(build)
@@ -24,6 +25,8 @@ faster: $(OBJ)
 	$(build) $(fasterflags) 
 fastest: $(OBJ) 
 	$(build) $(fastestflags)
+smaller: $(OBJ)
+	$(build) $(smallerflag)
 
 clang: $(OBJ)
 	$(cbuild)
@@ -33,6 +36,8 @@ cfaster: $(OBJ)
 	$(cbuild) $(fasterflags)
 cfastest: $(OBJ)
 	$(cbuild) $(fastestflags)
+csmaller: $(OBJ)
+	$(cbuild) $(smallerflag)
 
 clean:
 	rm -f $(OBJ) $(TARGET)

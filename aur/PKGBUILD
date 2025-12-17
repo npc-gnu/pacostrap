@@ -1,0 +1,26 @@
+pkgname=pacostrap
+pkgver=0.9.1
+pkgrel=1
+pkgdesc="Arch Linux's Unofficial Offline Installation Helper Tool"
+arch('x86_64')
+url="https://github.com/npc-gnu/pacostrap"
+license=('GPL3')
+depends=('glibc' 'nlohmann-json')
+makedepends=('gcc' 'make')
+source=("https://raw.githubusercontent.com/npc-gnu/pacostrap/aur/pacostrap-0.9.1.tar.gz")
+sha256sums=('SKIP')
+
+build(){
+	cd "$srcdir/pacostrap/aur"
+	make -f setup/Makefile 
+}
+
+package() {
+	cd "$srcdir/pacostrap-$pkgver"
+
+	install -Dm755 pacostrap "$pkgdir/usr/bin/pacostrap"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 pacostrap.png "$pkgdir/usr/share/pixmaps/pacostrap.png"
+}
+

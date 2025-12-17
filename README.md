@@ -85,10 +85,11 @@ Else if you are using **My OwN sUpEr DuPeR** custom ArchISO, then
 ## Fork(s) Of pacostrap
 [javav12/pacofstrap](https://github.com/javav12/pacofstrap)
 
-## Functions That `pacostrap` Uses
-- 1st command - A safe way to execute system commands for UNIX-based/Unix-like OS'ses [link](https://gitlab.com/pigames3/command)
-- 2nd animatel - '.' or string animation function [link](https://gitlab.com/pigames3/animatel)
-- 3rd archstrap - Archlinux's bootstrap tarball image [link](https://github.com/wick3dr0se/archstrap) 
+## Functions/Librarys That `pacostrap` Uses
+- 1st [nlohmann/json](https://github.com/nlohmann/json) Best C++ json library
+- 2nd [`command`](https://github.com/npc-gnu/command) - A safe way to execute system commands for UNIX-based/Unix-like OS'ses
+- 3rd [`animatel`](https://github.com/npc-gnu/animatel) - '.' or string animation function 
+- 4th [`archstrap`](https://github.com/wick3dr0se/archstrap) - Archlinux's bootstrap tarball image 
 
 ## Contributors
 
