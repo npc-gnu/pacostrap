@@ -11,9 +11,9 @@ int main(int argc, char* argv[]) {
 			string arg = argv[i];
 			if (arg.find("--pass=") == 0) {
 				skip_arg = arg.substr(7) ;
-		} else if (arg.find("-P=") == 0) {
-			shorter_skip_arg = arg.substr(3);
-		}
+			} else if (arg.find("-P=") == 0) {
+				shorter_skip_arg = arg.substr(3);
+			}
 		} if (skip_arg.empty() && shorter_skip_arg.empty() || skip_arg == "none" || shorter_skip_arg == "none") {
 			a_usbmount();
 			a_diskmount();
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 			return 1;
 		}
 	} else {
-	cerr << "\033[31;40mYou have to be root.\033[0m" << endl;
-	return 1;
-}
+		cerr << "\033[31;40mYou have to be root.\n And ummm... why the fuck did you added an user to ArchISO? What is wrong with you?!\033[0m" << endl;
+		return 1;
+	}
 }
