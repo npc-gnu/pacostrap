@@ -28,12 +28,6 @@ void diskpackage(){
 		cout << "\n";
 		cout << "\033[31;40mPackage copy operation failed.\033[0m" << endl;
 		exit(1);
-	} else if (forresult !=0) {
-		animating = false;
-		animThread.join();
-		cout << "\n";
-		cout << "\033[31;40mTaking package names failed.\033[0m" << endl;
-		exit(1);
 	} else if (pacresult !=0) {
 		animating = false;
 		animThread.join();
