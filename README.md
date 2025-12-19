@@ -3,8 +3,7 @@
 # pacostrap-beta
 ## pacstrap for offline installation(manuel arch installation)
 
-Hello Arch lovers!
-> 24 September 2025: README.md updated. Logos license added.
+Stable ARCHISO Edition for `pacostrap`.
 
 ## Compiling
 ```bash
