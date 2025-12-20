@@ -9,15 +9,12 @@ If you are asking,
 
 There is 2 kind of errors *and you should test* .
 
-|------------------------------------|---------------------------------------|
 |        User Interface Error        |         Critical Running Error        |
 |------------------------------------|---------------------------------------|
 | Not Working Animations             | Failed to format, mount your disk,    |
 | (Spinning stick and dot animation) | failed to take package name.          |
 | No Colors                          | Unrecognized argumant                 |
-|------------------------------------|---------------------------------------|
 |            /etc.                   |              /etc.                    |
-|------------------------------------|---------------------------------------|
 
 - Then add your failed test results to Issues.
 - Translate documentations to other languages.
@@ -34,4 +31,4 @@ There is 2 kind of errors *and you should test* .
 ```
 > AC means *Add colors*, ALA means *Add long animation*(Spinning animation) and ASA means *Add short animation*(Dot animation).
 
-- When to use which colors will be added here soon.
+- When to use which colors will be added when HL3 cames out.
