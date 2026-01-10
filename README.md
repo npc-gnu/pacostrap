@@ -22,6 +22,11 @@ sudo bash build/setup.sh # This script will automatically detect if you are root
 |`csmaller`         |Normal smaller but with clang++.                                                                     |
 > **MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner."**
 
+*or, 3rd option* **using compile script**
+> If you dont have make installed and you make sure your distro is arch based then go use it but make would be faster.
+```Bash
+bash setup/compile
+```
 ## Usage
 ### Normal
 ```[sudo] ./pacostrap <parameter>```
