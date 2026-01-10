@@ -1,5 +1,2 @@
 #!/bin/bash
-
-g++ -I/main/include -I/functions/include   \
-	/main/src/*.cpp functions/src/*.cpp  \
-		-o pacostrap
+g++ -Imain/include -Ifunctions/include main/src/*.cpp functions/src/*.cpp -o pacostrap

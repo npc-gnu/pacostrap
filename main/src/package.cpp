@@ -12,15 +12,16 @@ void package() {
 	command("cp pacostrap /mnt/pacostrap/");
 	string input;
 	cout << "\033[36mEnter packages you want to install order by order. Enter 'break' to end installing packages.\033[0m\n";
+	vector<string> packages;
 	while (true) {
 		cout << ">> ";
 		getline(cin, input);
 		if (input == "break")
 			break;
-	if (input.empty() || input.find_first_not_of(" \t") == string::npos) {
-		cout << "\033[93;40mSpace is not a package!\033[0m" << endl;
-		continue;
-	} packages.push_back(input);
+		if (input.empty() || input.find_first_not_of(" \t") == string::npos) {
+			cout << "\033[93;40mSpace is not a package!\033[0m" << endl;
+			continue;
+		} packages.push_back(input);
 	} if(packages.empty()) {
 		cerr << "\033[31;40mNo packages given.\033[0m" << endl;
 		exit(1);
@@ -41,5 +42,4 @@ void package() {
 		cin.ignore();
 		cout << "\033[32m1st stage: Succesfully ended!\033[0m\n";
 		}
-	}
 }
