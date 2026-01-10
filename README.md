@@ -1,50 +1,48 @@
 ![pacostrap logo](pacostrap.png)
 
-# pacostrap-beta
+# pacostrap-beta/main-rolling branch
 ## pacstrap for offline installation(manuel arch installation)
-
-Hello Arch lovers!
-> 28 November 2025: build » setup, Makefile updated, README.md updated according to Makefile, .gitignore updated.
-
+> What is difference between main and main-rolling?
+> Vanilla main is stable version and rolling version is the one that contains all new features but might be broken.
 ## Installation
-```any linux shell
+```Bash
 sudo bash build/setup.sh # This script will automatically detect if you are root or not, your machine have arch based distro or not and if it is not; then it will download tarball too.
 ```
-*or*
-```any linux shell
-bash setup/compile
-# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. And i would not recommend it. It uses g++ directly and would be slower. 
-```
-*or, 3rd and last option* **Using Make.**
-```any linux shell
-make --makefile setup/Makefile -j$(nproc) # For normal compiling.
-make --makefile setup/Makefile fast -j$(nproc) # For optimized code. A bit faster.
-make --makefile setup/Makefile faster -j$(nproc) # For more optimized code. However, it can be a little tracky because of more optimization.
-make --makefile setup/Makefile fastest -j$(nproc) # For most optimized code. This is most dangerous and fastest working code. 
-make --makefile setup/Makefile clang -j$(nproc) # For normal compiling with clang++ instead of g++. I would recommend g++ ones bcz well... I love GNU.
-make --makefile setup/Makefile cfast -j$(nproc) # Normal fast but with clang++.
-make --makefile setup/Makefile cfaster -j$(nproc) # Normal faster but with clang++.
-make --makefile setup/Makefile cfastest -j$(nproc) # Normal fastest but with clang++.
-# MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner.
-```
+*or, 2nd  option* **using Make.**
+```make --makefile setup/Makefile -j$(nproc) <option> # -j$(nproc) is not reqired but i recommend it. It compiles faster.``` 
+|Option             |Description                                                                                          |
+|-------------------|-----------------------------------------------------------------------------------------------------|  
+|`fast`             |For optimized code. A bit faster binary.                                                             |
+|`faster`           |For more optimized code. However, it can be a little tracky because of more optimization.            |
+|`fastest`          |For most optimized code. This is most dangerous and fastest working code.                            |
+|`smaller`          |For smaller binary.                                                                                  |
+|`clang`            |For normal compiling with clang++ instead of g++. I would recommend g++ ones bcz well... I love GNU. |
+|`cfast`            |Normal fast but with clang++.                                                                        |
+|`cfaster`          |Normal faster but with clang++.                                                                      |
+|`cfastest`         |Normal fastest but with clang++.                                                                     |
+|`csmaller`         |Normal smaller but with clang++.                                                                     |
+> **MAKE SURE YOUR DISTRO IS ARCH/ARCH BASED. This can be faster than build/setup.sh. Because it just calls make, not an entire script. But this is not user-friendly if you are a beginner."**
+
 ## Usage
 ### Normal
-```Any GNU + Linux shell
-sudo ./pacostrap --stage=1 / -S=1 # For first stage
- ./pacostrap --stage=2 / -S=2 # For second stage
-sudo ./pacostrap -S=1 --pass=format / -P=F  # For first stage and skipping formatting.
-sudo ./pacostrap -S=1 --pass=mount / -P=M # For first stage and skipping formatting with mounting.
- ./pacostrap -S=2 --pass=mount / -P=M # For second stage and skipping disk mount.
-```
-> If you asking, *Why using sudo in first stage but not in the second?*
+```[sudo] ./pacostrap <parameter>```
+|Option                       |Description                                                                    |
+|-----------------------------|-------------------------------------------------------------------------------|
+|`--stage=1` *or* `-S=1`      |For first stage                                                                |
+|`--stage=2` *or* `-S=2`      |For second stage                                                               |
+|`--pass=format` *or* `-P=F`  |For skipping USB formatting, **only for first stage.**                         |
+|`--pass=mount` *or* `-P=M`   |For skipping USB formatting and mounting; and again, **only for first stage.** |
+|`--pass=mount` *or* `-P=M`   |For skipping disk mount, **only for second stage.**                            |
+
+> If you are asking, *Why using sudo in first stage but not in the second?*
 > Answer is: You will be root in archiso(so in the second stage) but you will probably non-root in normal destkop using.
 ### You can check here if Arch developers add this software to ArchISO. (For normal usage, you probably won’t need this.) 
-``` Any GNU + Linux shell
+Bash
 pacostrap # For normal customized second stage
 pacostrap --pass=usbmount / -P=U-M # For skipping USB mounting and doing mounting disk with installing packages.
 pacostrap --pass=diskmount / -P=D-M # For skipping disk mounting and doing USB mounting with installing packages.
 pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=U,D-M # For skipping both USB and disk mounting with doing only installing packages.
-```
+
 > Where is --stage / -S argumant?
 > Answer is: Because you don't need first stage in archiso.  
 
@@ -100,3 +98,4 @@ Else if you are using **My OwN sUpEr DuPeR** custom ArchISO, then
 ## License:
 Every source code of this project (All .cpp/.hpp source codes, all bash scripts, Makefiles and .md files) licensed by GNU General Public License version 3(GPLv3). [LICENSE file](https://github.com/npc-gnu/pacostrap/blob/main/LICENSE)
 pacostrap.png, *logo* is licensed by V-Pi-Lv1. [Logos LICENSE file](https://github.com/npc-gnu/pacostrap/blob/main/LOGOS_LICENSE.md)
+
