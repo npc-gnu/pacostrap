@@ -3,19 +3,13 @@
 #include <vector> 
 #include <cstdlib> 
 #include <thread>
-#include <fstream>
-#include <nlohmann/json.hpp>
 #include "spinner.hpp" 
 #include "firststagefuncs.hpp" 
 #include "command.hpp"
 using namespace std;
-using json = nlohmann::json;
 void package() {
 	command("mkdir /mnt/pacostrap");
 	command("cp pacostrap /mnt/pacostrap/");
-	ofstream file("packages.json");
-	json j;
-	vector<string> packages;
 	string input;
 	cout << "\033[36mEnter packages you want to install order by order. Enter 'break' to end installing packages.\033[0m\n";
 	while (true) {
@@ -42,16 +36,6 @@ void package() {
 		cerr << "\033[31;40mFailed to install packages.\033[0m" << endl;
 		exit(1);
 	} else {
-		j["packages"] = packages;
-		file << j.dump(4);
-		if (!file.good()) {
-			file.close();
-			animating = false;
-			animThread.join();
-			cerr << "Failed to write json data to file." << endl; /*FIXME AC*/
-			exit(1);
-		} else {
-		file.close();
 		animating = false;
 		animThread.join();
 		cin.ignore();
