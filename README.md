@@ -40,13 +40,13 @@ bash setup/compile
 
 > If you are asking, *Why using sudo in first stage but not in the second?*
 > Answer is: You will be root in archiso(so in the second stage) but you will probably non-root in normal destkop using.
-### You can check here if Arch developers add this software to ArchISO. (For normal usage, you probably won’t need this.) 
-Bash
+### You can check here if Arch developers add this software to ArchISO or if you are using my custom ArchISO. (For normal usage, you probably won’t need this.) 
+```Bash
 pacostrap # For normal customized second stage
 pacostrap --pass=usbmount / -P=U-M # For skipping USB mounting and doing mounting disk with installing packages.
 pacostrap --pass=diskmount / -P=D-M # For skipping disk mounting and doing USB mounting with installing packages.
 pacostrap --pass=diskmount,usbmount / --pass=usbmount,diskmount / -P=D,U-M / -P=U,D-M # For skipping both USB and disk mounting with doing only installing packages.
-
+```
 > Where is --stage / -S argumant?
 > Answer is: Because you don't need first stage in archiso.  
 
